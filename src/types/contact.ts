@@ -1,3 +1,9 @@
+export interface FormState {
+    success?: boolean;
+    message?: string;
+    error?: string;
+}
+
 export interface TurnstileResponse {
     success: boolean;
     "error-codes"?: string[];

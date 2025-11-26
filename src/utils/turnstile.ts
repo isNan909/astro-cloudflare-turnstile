@@ -1,16 +1,15 @@
-const TURNSTILE_SECRET_KEY = import.meta.env.TURNSTILE_SECRET_KEY;
 const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
-export async function verifyTurnstileToken(token: string): Promise<{
+export async function verifyTurnstileToken(token: string, secretKey: string): Promise<{
   success: boolean;
   error?: string;
 }> {
   try {
-    if (!TURNSTILE_SECRET_KEY) {
+    if (!secretKey) {
       console.error('TURNSTILE_SECRET_KEY is not configured');
       return {
         success: false,
-        error: 'Server configuration error',
+        error: 'Server configuration error.',
       };
     }
 
@@ -20,7 +19,7 @@ export async function verifyTurnstileToken(token: string): Promise<{
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        secret: TURNSTILE_SECRET_KEY,
+        secret: secretKey,
         response: token,
       }),
     });
