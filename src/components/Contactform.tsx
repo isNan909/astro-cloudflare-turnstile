@@ -85,7 +85,7 @@ export default function ContactForm() {
       <div
         className="cf-turnstile w-full"
         data-sitekey="0x4AAAAAACDAp2pSvhjq3_Wm"
-        data-size="normal"
+        data-size="flexible"
       />
 
       {/* Error */}
